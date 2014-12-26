@@ -89,7 +89,7 @@
 			$this->hasProfanity();
 		}
 		else {
-			echo "error";
+			echo 'There was an error.  Please visit <a href="https://github.com/jamesf408/profanity_checker">https://github.com/jamesf408/profanity_checker</a> for instructions.';
 		}
 	}
 
@@ -134,17 +134,18 @@
 		foreach ($split as $word) // Loop through each word in the $split array
 		{
 			$fix_word = strtolower($word); // lowercase each word to check if it matches the profanity list
-			if (in_array($fix_word, $this->words)) {
-				$checker['output'] = true;
-				array_push($checkedWords, 'true');
-				echo json_encode($checker);
-				break;
+			if (in_array($fix_word, $this->words)) { // check if current word is in the $words array
+				$checker['output'] = true; // create variable and assign it a boolean value of true
+				array_push($checkedWords, 'true'); // adds the word true to the $checkedWords array to make sure a bad word gets flagged
+				echo json_encode($checker); // if profanity is found, echo it out through a json object
+				break; // if any profanity exists, exit out of the loop.  No need to continue.
 			}
 			else
 			{
-				array_push($checkedWords, $fix_word);
+				array_push($checkedWords, $fix_word); // add good words to $checkedWords
 			}
 		}
+		// NEED TO FIX CHECKER WHEN SOMEONE HAS THE WORD "TRUE" IN THEIR STRING.  CHECKER FAILS WHEN THIS HAPPENS.
 		if (!in_array('true', $checkedWords)) {
 			$checker['output'] = false;
 			echo json_encode($checker);
