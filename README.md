@@ -13,8 +13,8 @@ json results: <br>
 <code>{"output":"some text _____"}</code>
 
 If profanity is found it will replace the word with "_____" as a default.  This can be changed adding an additional variable to the link.
-<code>yourwebsite.com/profanitychecker.php?<strong>json</strong>=Some text badword&options=***</code>
-This will replace the default characters with "***".
+<code>yourwebsite.com/profanitychecker.php?<strong>json</strong>=Some text badword&options=******</code>
+This will replace the default characters with "******".
 
 json results: <br>
 <code>{"output":"some text ***"}</code>
