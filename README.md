@@ -1,4 +1,5 @@
 <h1>Profanity Checker v1.0</h1>
+<h3>Live example: <a href="http://www.jamesafarris.info/projects/php/profanitychecker/profanitychecker.php">http://www.jamesafarris.info/projects/php/profanitychecker/profanitychecker.php</a></h3>
 =================
 
 Check profanity in a given string.  Will return a json object, a plain text object, or a boolean if a string contains profanity within the profanity list in the ProfanityChecker class.
