@@ -1,4 +1,4 @@
-<?php class WordDetect {
+<?php class ProfanityChecker {
 
 	// profanity list, updated 12/25/2014
 	private $words = array('anal',
@@ -188,5 +188,5 @@
 		return $fixed_sentence; // return results
 	}
 }
-$wordDetect = new WordDetect(); // instantiate the class so it can be used
+$ProfanityChecker = new ProfanityChecker(); // instantiate the class so it can be used
 ?>
