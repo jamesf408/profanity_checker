@@ -140,27 +140,34 @@
 	public function hasProfanity()
 	{
 		$text = $_GET['check'];
-		$stripPunctuation = trim(preg_replace( "/[^0-9a-z]+/i", " ", $text)); // strips any punctuation to evaluate the word
-		$split = explode(' ', $stripPunctuation); //Take the string of text and create an array
-		$checkedWords = array();
-		foreach ($split as $word) // Loop through each word in the $split array
-		{
-			$fix_word = strtolower($word); // lowercase each word to check if it matches the profanity list
-			if (in_array($fix_word, $this->words)) { // check if current word is in the $words array
-				$checker['hasProfanity'] = true; // create variable and assign it a boolean value of true
-				array_push($checkedWords, 'true'); // adds the word true to the $checkedWords array to make sure a bad word gets flagged
-				echo json_encode($checker); // if profanity is found, echo it out through a json object
-				break; // if any profanity exists, exit out of the loop.  No need to continue.
-			}
-			else
-			{
-				array_push($checkedWords, $fix_word); // add good words to $checkedWords
-			}
-		}
-		// NEED TO FIX CHECKER WHEN SOMEONE HAS THE WORD "TRUE" IN THEIR STRING.  CHECKER FAILS WHEN THIS HAPPENS.
-		if (!in_array('true', $checkedWords)) {
-			$checker['hasProfanity'] = false;
+		if (empty($text)) {
+			$checker['error'] = "Nothing to evaluate";
 			echo json_encode($checker);
+		}
+		else
+		{
+			$stripPunctuation = trim(preg_replace( "/[^0-9a-z]+/i", " ", $text)); // strips any punctuation to evaluate the word
+			$split = explode(' ', $stripPunctuation); //Take the string of text and create an array
+			$checkedWords = array();
+			foreach ($split as $word) // Loop through each word in the $split array
+			{
+				$fix_word = strtolower($word); // lowercase each word to check if it matches the profanity list
+				if (in_array($fix_word, $this->words)) { // check if current word is in the $words array
+					$checker['hasProfanity'] = true; // create variable and assign it a boolean value of true
+					array_push($checkedWords, 'true'); // adds the word true to the $checkedWords array to make sure a bad word gets flagged
+					echo json_encode($checker); // if profanity is found, echo it out through a json object
+					break; // if any profanity exists, exit out of the loop.  No need to continue.
+				}
+				else
+				{
+					array_push($checkedWords, $fix_word); // add good words to $checkedWords
+				}
+			}
+			// NEED TO FIX CHECKER WHEN SOMEONE HAS THE WORD "TRUE" IN THEIR STRING.  CHECKER FAILS WHEN THIS HAPPENS.
+			if (!in_array('true', $checkedWords)) {
+				$checker['hasProfanity'] = false;
+				echo json_encode($checker);
+			}
 		}
 	}
 
