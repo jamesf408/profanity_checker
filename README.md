@@ -44,3 +44,13 @@ ____________
 
 check json results: <br>
 <code>{"hasProfanity":true}</code>
+
+____________
+
+<h2>TO DO</h2>
+<ul>
+	<li>Fix method to add punctuation once stripped in a string</li>
+	<li>Update profanity list</li>
+	<li>Possibly create database file of profanity list</li>
+	<li>Remove profanity list from ProfanityChecker class</li>
+</ul>
