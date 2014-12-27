@@ -43,4 +43,4 @@ ____________
 <code>yourwebsite.com/profanitychecker.php?<strong>check</strong>=Some text badword</code>
 
 check json results: <br>
-<code>{"output":true}</code>
+<code>{"hasProfanity":true}</code>

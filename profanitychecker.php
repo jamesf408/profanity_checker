@@ -147,7 +147,7 @@
 		{
 			$fix_word = strtolower($word); // lowercase each word to check if it matches the profanity list
 			if (in_array($fix_word, $this->words)) { // check if current word is in the $words array
-				$checker['output'] = true; // create variable and assign it a boolean value of true
+				$checker['hasProfanity'] = true; // create variable and assign it a boolean value of true
 				array_push($checkedWords, 'true'); // adds the word true to the $checkedWords array to make sure a bad word gets flagged
 				echo json_encode($checker); // if profanity is found, echo it out through a json object
 				break; // if any profanity exists, exit out of the loop.  No need to continue.
@@ -159,7 +159,7 @@
 		}
 		// NEED TO FIX CHECKER WHEN SOMEONE HAS THE WORD "TRUE" IN THEIR STRING.  CHECKER FAILS WHEN THIS HAPPENS.
 		if (!in_array('true', $checkedWords)) {
-			$checker['output'] = false;
+			$checker['hasProfanity'] = false;
 			echo json_encode($checker);
 		}
 	}
