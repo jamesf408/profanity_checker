@@ -140,7 +140,8 @@
 	public function hasProfanity()
 	{
 		$text = $_GET['check'];
-		$split = explode(' ', $text); //Take the string of text and create an array
+		$stripPunctuation = trim(preg_replace( "/[^0-9a-z]+/i", " ", $text)); // strips any punctuation to evaluate the word
+		$split = explode(' ', $stripPunctuation); //Take the string of text and create an array
 		$checkedWords = array();
 		foreach ($split as $word) // Loop through each word in the $split array
 		{
@@ -181,7 +182,8 @@
 	// CHECKWORDS IS WHERE MOST OF THE PROCESSING HAPPENS, SET TO PRIVATE AS IT'S ONLY USED WITHIN THE CLASS
 	private function checkwords($text, $options = '_____')
 	{
-		$split = explode(' ', $text); //Take the string of text and create an array
+		$stripPunctuation = trim(preg_replace( "/[^0-9a-z]+/i", " ", $text)); // strips any punctuation to evaluate the word
+		$split = explode(' ', $stripPunctuation); //Take the string of text and create an array
 		$corrected = array(); // Empty array used to collect finalized words in order
 		foreach ($split as $word) // Loop through each word in the $split array
 		{
