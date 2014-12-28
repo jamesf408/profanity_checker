@@ -100,7 +100,7 @@
 			$this->hasProfanity();
 		}
 		else {
-			echo 'There was an error.  Please visit <a href="https://github.com/jamesf408/profanity_checker">https://github.com/jamesf408/profanity_checker</a> for instructions.';
+			echo 'There was an error.  Please visit <a href="https://github.com/jamesf408/profanity_checker">https://github.com/jamesf408/profanity_checker</a> for instructions or use the online form <a href="http://www.jamesafarris.info/projects/php/profanitychecker/checkprofanity.php">http://www.jamesafarris.info/projects/php/profanitychecker/checkprofanity.php</a>';
 		}
 	}
 
